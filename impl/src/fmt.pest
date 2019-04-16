@@ -1,0 +1,8 @@
+modifier = { "@" | "=" | "<" | ">" | "!" }
+char = { "x" | "?" | ^"b" | ^"h" | ^"i" | ^"l" | ^"q" | ^"n" | "f" | "d" | "s" }
+ident = @{ "`" ~ LETTER+ ~ "`" }
+rpt = { DECIMAL_NUMBER* }
+code = ${ rpt ~ (char | ident) }
+fmt = { SOI ~ modifier? ~ code* ~ EOI }
+
+WHITESPACE = _{ " " }

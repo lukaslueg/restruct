@@ -1,0 +1,22 @@
+[package]
+name = "restruct_derive"
+version = "0.1.0"
+description = "Converts between raw bytes and structured data."
+repository = "http://github.com/lukaslueg/restruct"
+documentation = "https://docs.rs/restruct_derive"
+authors = ["Lukas Lueg <lukas.lueg@gmail.com>"]
+readme = "README.md"
+license = "MIT"
+edition = "2018"
+
+[lib]
+proc-macro = true
+
+[dependencies]
+restruct = { path = "../impl", version = "0.1" }
+
+[dev-dependencies]
+libc = "0.2"
+
+[features]
+rustfmt = ["restruct/rustfmt"]

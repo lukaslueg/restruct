@@ -1,0 +1,9 @@
+[package]
+name = "example_pcap"
+version = "0.1.0"
+authors = ["Lukas Lueg <lukas.lueg@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+restruct = { path = "../impl" , version = "0.1" }
+restruct_derive = { path = "../derive", version = "0.1" }
