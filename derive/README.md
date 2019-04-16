@@ -1,3 +1,7 @@
+[![Build Status](https://travis-ci.org/lukaslueg/restruct.svg?branch=master)](https://travis-ci.org/lukaslueg/restruct)
+[![Build status](https://ci.appveyor.com/api/projects/status/ufh9cuameeqe3hsx?svg=true)](https://ci.appveyor.com/project/lukaslueg/restruct)
+
+
 `restruct` is used to interpret binary data stored in files or other sources or convert
 between C structs and Rust types and when using a parser-generator is considered
 disproportionate.
@@ -7,7 +11,7 @@ The library uses Format Strings as compact descriptions of the binary data and t
 conversion to/from Rust-types. The Format Strings are interpreted at compile-time to
 generate a type whose functions can be used to convert between unstructured and structured data.
 
-```
+```rust
 #![feature(const_int_conversion)]
 #![feature(const_fn)]
 #![feature(const_slice_len)]
