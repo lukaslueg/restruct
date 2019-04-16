@@ -1,5 +1,7 @@
 [![Build Status](https://travis-ci.org/lukaslueg/restruct.svg?branch=master)](https://travis-ci.org/lukaslueg/restruct)
 [![Build status](https://ci.appveyor.com/api/projects/status/ufh9cuameeqe3hsx?svg=true)](https://ci.appveyor.com/project/lukaslueg/restruct)
+[![Crates.io Version](https://img.shields.io/crates/v/restruct_derive.svg)](https://crates.io/crates/restruct_derive)
+[![Docs](https://docs.rs/restruct_derive/badge.svg)](https://docs.rs/restruct_derive)
 
 
 `restruct` is used to interpret binary data stored in files or other sources or convert
