@@ -1,6 +1,5 @@
 #![feature(const_int_conversion)]
 #![feature(const_fn)]
-#![feature(const_slice_len)]
 #![feature(const_transmute)]
 
 extern "C" {

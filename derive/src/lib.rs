@@ -32,7 +32,6 @@
 //! ```
 //! # #![feature(const_int_conversion)]
 //! # #![feature(const_fn)]
-//! # #![feature(const_slice_len)]
 //! # #![feature(const_transmute)]
 //! // Generate a parser in little-endian for two 32bit integers, a float and a bool.
 //! #[derive(restruct_derive::Struct)]
@@ -63,7 +62,6 @@
 //! ```ignore
 //! # #![feature(const_int_conversion)]
 //! # #![feature(const_fn)]
-//! # #![feature(const_slice_len)]
 //! # #![feature(const_transmute)]
 //! // As the packing- and unpacking-functions are const, they can initialize other constants.
 //! // Read some file from disk and directly unpack it into a const during compilation.
@@ -94,7 +92,6 @@
 //! ```
 //! #![feature(const_int_conversion)]
 //! #![feature(const_fn)]
-//! #![feature(const_slice_len)]
 //! #![feature(const_transmute)]
 //! ```
 //!
@@ -106,7 +103,6 @@
 //! ```
 //! # #![feature(const_int_conversion)]
 //! # #![feature(const_fn)]
-//! # #![feature(const_slice_len)]
 //! # #![feature(const_transmute)]
 //! #[derive(restruct_derive::Struct)]
 //! #[fmt=">3Qb2?l"]
@@ -242,7 +238,6 @@
 //! ```
 //! # #![feature(const_int_conversion)]
 //! # #![feature(const_fn)]
-//! # #![feature(const_slice_len)]
 //! # #![feature(const_transmute)]
 //! #[derive(restruct_derive::Struct)]
 //! #[fmt = ">2hl"]
@@ -264,7 +259,6 @@
 //! ```
 //! # #![feature(const_int_conversion)]
 //! # #![feature(const_fn)]
-//! # #![feature(const_slice_len)]
 //! # #![feature(const_transmute)]
 //! #[derive(restruct_derive::Struct)]
 //! #[fmt = ">"]
@@ -279,7 +273,6 @@
 //! ```
 //! # #![feature(const_int_conversion)]
 //! # #![feature(const_fn)]
-//! # #![feature(const_slice_len)]
 //! # #![feature(const_transmute)]
 //! #[derive(restruct_derive::Struct)]
 //! #[fmt = ">2h"]
@@ -295,7 +288,6 @@
 //! ```
 //! # #![feature(const_int_conversion)]
 //! # #![feature(const_fn)]
-//! # #![feature(const_slice_len)]
 //! # #![feature(const_transmute)]
 //! use std::io::{self, Read};
 //!
@@ -329,7 +321,6 @@
 //! ```
 //! # #![feature(const_int_conversion)]
 //! # #![feature(const_fn)]
-//! # #![feature(const_slice_len)]
 //! # #![feature(const_transmute)]
 //! use std::io::{self, Write};
 //!
@@ -375,7 +366,6 @@
 //! ```
 //! # #![feature(const_int_conversion)]
 //! # #![feature(const_fn)]
-//! # #![feature(const_slice_len)]
 //! # #![feature(const_transmute)]
 //! #[derive(restruct_derive::Struct)]
 //! #[fmt = "b0ib"]
@@ -397,7 +387,6 @@
 //! ```
 //! # #![feature(const_int_conversion)]
 //! # #![feature(const_fn)]
-//! # #![feature(const_slice_len)]
 //! # #![feature(const_transmute)]
 //! #[derive(restruct_derive::Struct)]
 //! #[fmt = "=i3s"]
@@ -445,7 +434,6 @@
 //! ```ignore
 //! # #![feature(const_int_conversion)]
 //! # #![feature(const_fn)]
-//! # #![feature(const_slice_len)]
 //! # #![feature(const_transmute)]
 //! #[derive(restruct_derive::Struct)]
 //! #[fmt = "@2dl"]
