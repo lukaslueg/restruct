@@ -1,4 +1,3 @@
-#![feature(const_int_conversion)]
 #![feature(const_fn)]
 #![feature(const_transmute)]
 
