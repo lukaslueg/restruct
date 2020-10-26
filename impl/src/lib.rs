@@ -83,22 +83,22 @@ impl Derive {
         let mut debug_output = false;
 
         for attr in ast.attrs {
-            match attr.interpret_meta() {
-                Some(syn::Meta::NameValue(ref name_value)) if name_value.ident == "fmt" => {
+            match attr.parse_meta() {
+                Ok(syn::Meta::NameValue(ref name_value)) if name_value.path.is_ident("fmt") => {
                     match &name_value.lit {
                         syn::Lit::Str(string) => format.push_str(&string.value()),
                         _ => panic!("fmt attribute must be a string."),
                     }
                 }
-                Some(syn::Meta::NameValue(ref name_value))
-                    if name_value.ident == "debug_output" =>
+                Ok(syn::Meta::NameValue(ref name_value))
+                    if name_value.path.is_ident("debug_output") =>
                 {
                     match &name_value.lit {
                         syn::Lit::Bool(b) => debug_output = b.value,
                         _ => panic!("debug_output attribute must be a bool."),
                     }
                 }
-                Some(syn::Meta::Word(ref ident)) if ident == "debug_output" => debug_output = true,
+                Ok(syn::Meta::Path(ref p)) if p.is_ident("debug_output") => debug_output = true,
                 _ => {}
             }
         }
