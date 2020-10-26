@@ -31,7 +31,7 @@
 //!
 //! ```
 //! # #![feature(const_fn)]
-//! # #![feature(const_transmute)]
+//! # #![feature(const_fn_transmute)]
 //! // Generate a parser in little-endian for two 32bit integers, a float and a bool.
 //! #[derive(restruct_derive::Struct)]
 //! #[fmt="<2if?"]
@@ -60,7 +60,7 @@
 //!
 //! ```ignore
 //! # #![feature(const_fn)]
-//! # #![feature(const_transmute)]
+//! # #![feature(const_fn_transmute)]
 //! // As the packing- and unpacking-functions are const, they can initialize other constants.
 //! // Read some file from disk and directly unpack it into a const during compilation.
 //! #[derive(restruct_derive::Struct)]
@@ -89,7 +89,7 @@
 //! unsealed:*
 //! ```
 //! #![feature(const_fn)]
-//! #![feature(const_transmute)]
+//! #![feature(const_fn_transmute)]
 //! ```
 //!
 //! # Deriving
@@ -99,7 +99,7 @@
 //!
 //! ```
 //! # #![feature(const_fn)]
-//! # #![feature(const_transmute)]
+//! # #![feature(const_fn_transmute)]
 //! #[derive(restruct_derive::Struct)]
 //! #[fmt=">3Qb2?l"]
 //! struct FrameHeader;
@@ -233,7 +233,7 @@
 //! Packing three integers using standard sizes in big-endian:
 //! ```
 //! # #![feature(const_fn)]
-//! # #![feature(const_transmute)]
+//! # #![feature(const_fn_transmute)]
 //! #[derive(restruct_derive::Struct)]
 //! #[fmt = ">2hl"]
 //! struct Foobar;
@@ -253,7 +253,7 @@
 //! The Format String can passed in multiple parts, simplifying construction by macros:
 //! ```
 //! # #![feature(const_fn)]
-//! # #![feature(const_transmute)]
+//! # #![feature(const_fn_transmute)]
 //! #[derive(restruct_derive::Struct)]
 //! #[fmt = ">"]
 //! #[fmt = "2h"]
@@ -266,7 +266,7 @@
 //! Slices can be unpacked at the cost of a copy (which may get elided):
 //! ```
 //! # #![feature(const_fn)]
-//! # #![feature(const_transmute)]
+//! # #![feature(const_fn_transmute)]
 //! #[derive(restruct_derive::Struct)]
 //! #[fmt = ">2h"]
 //! struct Foobar;
@@ -280,7 +280,7 @@
 //! The derived types can be referred to via the `Struct` trait:
 //! ```
 //! # #![feature(const_fn)]
-//! # #![feature(const_transmute)]
+//! # #![feature(const_fn_transmute)]
 //! use std::io::{self, Read};
 //!
 //! #[derive(restruct_derive::Struct)]
@@ -312,7 +312,7 @@
 //! formats, two steps are necessary:
 //! ```
 //! # #![feature(const_fn)]
-//! # #![feature(const_transmute)]
+//! # #![feature(const_fn_transmute)]
 //! use std::io::{self, Write};
 //!
 //! #[derive(restruct_derive::Struct)]
@@ -356,7 +356,7 @@
 //! Alignment rules apply in native mode:
 //! ```
 //! # #![feature(const_fn)]
-//! # #![feature(const_transmute)]
+//! # #![feature(const_fn_transmute)]
 //! #[derive(restruct_derive::Struct)]
 //! #[fmt = "b0ib"]
 //! struct Foobar;
@@ -376,7 +376,7 @@
 //! Formats can refer to previous definitions:
 //! ```
 //! # #![feature(const_fn)]
-//! # #![feature(const_transmute)]
+//! # #![feature(const_fn_transmute)]
 //! #[derive(restruct_derive::Struct)]
 //! #[fmt = "=i3s"]
 //! struct Foo;
@@ -422,7 +422,7 @@
 //! matches the actual layout:
 //! ```ignore
 //! # #![feature(const_fn)]
-//! # #![feature(const_transmute)]
+//! # #![feature(const_fn_transmute)]
 //! #[derive(restruct_derive::Struct)]
 //! #[fmt = "@2dl"]
 //! struct Header;

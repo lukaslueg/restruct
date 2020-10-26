@@ -15,7 +15,7 @@ generate a type whose functions can be used to convert between unstructured and 
 
 ```rust
 #![feature(const_fn)]
-#![feature(const_transmute)]
+#![feature(const_fn_transmute)]
 
 // Generate a parser in little-endian for two 32bit integers, a float and a bool.
 #[derive(restruct_derive::Struct)]
