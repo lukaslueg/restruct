@@ -1,6 +1,6 @@
 [package]
 name = "restruct_derive"
-version = "0.1.0"
+version = "0.1.1"
 description = "Converts between raw bytes and structured data."
 repository = "http://github.com/lukaslueg/restruct"
 documentation = "https://docs.rs/restruct_derive"
