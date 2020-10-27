@@ -416,6 +416,7 @@
 //! Also note that the `"@...b"` in the Format String above is aliased via `libc::c_char`; it
 //! resolves to `i8` on x86-platforms but `u8` on ARM because `c_char` is unsigned on that
 //! platform. A line like `header.2 < 0` will - rightfully so - cause a compile-error on ARM.
+//!
 //! ---
 //!
 //! When converting from native structs, you must be **sure** that your layout description
@@ -429,10 +430,11 @@
 //!
 //! let head = unsafe { Header::from_raw(...) };
 //! ```
-//! Let assume that the C-struct we try to match above uses `int32_t` as it's third element.
+//! Lets assume that the C-struct we try to match above uses `int32_t` as it's third element.
 //! The layout above will match on 32bit-platforms where `"@...l"` is `i32`. On 64bit-platforms
 //! however `"@...l"` is `i64`, so `from_raw()` will cause an out-of-bounds memory access by four
 //! bytes on those platforms! The correct Format String would have been `"@2di"`.
+//!
 //! ---
 
 #![feature(external_doc)]
