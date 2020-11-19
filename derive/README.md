@@ -24,11 +24,21 @@ struct FooParser;
 
 // Pack a tuple of two integers, a float an a bool into a [u8; _]-buffer.
 let packed = FooParser::pack((1, 2, 3.0, false));
+assert_eq!(packed, [1, 0, 0, 0, 2, 0, 0, 0, 0, 0, 64, 64, 0]);
 assert_eq!(packed.len(), FooParser::SIZE);
 
 // Packing and unpacking can't fail at runtime.
 let unpacked = FooParser::unpack(packed);
 assert_eq!(unpacked, (1, 2, 3.0, false));
+
+// Any `io::Read` can be used directly.
+let unpacked = FooParser::read_from(&mut &packed[..]).expect("i/o failed");
+assert_eq!(unpacked, (1, 2, 3.0, false));
+
+// Any `io::Write` can be used directly.
+let mut buffer = Vec::with_capacity(FooParser::SIZE);
+FooParser::write_to((1, 2, 3.0, false), &mut buffer).expect("i/o failed");
+assert_eq!(&buffer, &packed);
 ```
 
 ```rust,ignore
