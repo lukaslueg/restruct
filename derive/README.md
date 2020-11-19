@@ -22,7 +22,7 @@ generate a type whose functions can be used to convert between unstructured and 
 #[fmt="<2if?"]
 struct FooParser;
 
-// Pack a tuple of two integers, a float an a bool into a [u8; _]-buffer.
+// Pack a tuple of two integers, a float and a bool into a [u8; _]-buffer.
 let packed = FooParser::pack((1, 2, 3.0, false));
 assert_eq!(packed, [1, 0, 0, 0, 2, 0, 0, 0, 0, 0, 64, 64, 0]);
 assert_eq!(packed.len(), FooParser::SIZE);
