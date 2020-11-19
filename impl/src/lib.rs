@@ -50,7 +50,8 @@ pub trait Struct {
 }
 
 pub fn derive(input: proc_macro2::TokenStream) -> proc_macro2::TokenStream {
-    let derive = Derive::new(syn::parse2(input).unwrap());
+    let derive = Derive::new(syn::parse2(input).expect("Syn failed to parse input tokens."))
+        .expect("Failed to parse input tokens.");
 
     let format = parser::parse(&derive.format).expect("Failed to parse format-string");
 
@@ -75,7 +76,7 @@ struct Derive {
 }
 
 impl Derive {
-    fn new(ast: syn::DeriveInput) -> Self {
+    fn new(ast: syn::DeriveInput) -> syn::parse::Result<Self> {
         let name = ast.ident;
         let generics = ast.generics;
 
@@ -83,14 +84,14 @@ impl Derive {
         let mut debug_output = false;
 
         for attr in ast.attrs {
-            match attr.parse_meta() {
-                Ok(syn::Meta::NameValue(ref name_value)) if name_value.path.is_ident("fmt") => {
+            match attr.parse_meta()? {
+                syn::Meta::NameValue(ref name_value) if name_value.path.is_ident("fmt") => {
                     match &name_value.lit {
                         syn::Lit::Str(string) => format.push_str(&string.value()),
                         _ => panic!("fmt attribute must be a string."),
                     }
                 }
-                Ok(syn::Meta::NameValue(ref name_value))
+                syn::Meta::NameValue(ref name_value)
                     if name_value.path.is_ident("debug_output") =>
                 {
                     match &name_value.lit {
@@ -98,16 +99,19 @@ impl Derive {
                         _ => panic!("debug_output attribute must be a bool."),
                     }
                 }
-                Ok(syn::Meta::Path(ref p)) if p.is_ident("debug_output") => debug_output = true,
+                syn::Meta::List(ref l) if l.path.is_ident("fmt") => {
+                    panic!("fmt attribute does not take a list. Expected `#[fmt=\"...\"]`.");
+                }
+                syn::Meta::Path(ref p) if p.is_ident("debug_output") => debug_output = true,
                 _ => {}
             }
         }
 
-        Self {
+        Ok(Self {
             name,
             generics,
             format,
             debug_output,
-        }
+        })
     }
 }

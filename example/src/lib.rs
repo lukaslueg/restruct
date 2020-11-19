@@ -38,7 +38,6 @@ pub mod world {
             unsafe { Self::from_raw(super::reach_lowest_turtle()) }
         }
     }
-
 }
 
 #[cfg(test)]
