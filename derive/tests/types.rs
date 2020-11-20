@@ -186,7 +186,11 @@ macro_rules! test_relative_sizes {
     ($modname:ident, $fmt1:literal, $fmt2:literal) => {
         mod $modname {
             test_relative_sizes!(none, "", $fmt1, $fmt2);
+            test_relative_sizes!(native_std, "=", $fmt1, $fmt2);
+            test_relative_sizes!(le, "<", $fmt1, $fmt2);
+            test_relative_sizes!(be, "<", $fmt1, $fmt2);
             test_relative_sizes!(native, "@", $fmt1, $fmt2);
+            test_relative_sizes!(network, "!", $fmt1, $fmt2);
         }
     };
     () => {
@@ -211,7 +215,11 @@ macro_rules! test_absolute_sizes {
         $(
         mod $modname {
             test_absolute_sizes!(none, "", $fmt, $eq $fix);
+            test_absolute_sizes!(native_std, "=", $fmt, $eq $fix);
+            test_absolute_sizes!(le, "<", $fmt, $eq $fix);
+            test_absolute_sizes!(be, ">", $fmt, $eq $fix);
             test_absolute_sizes!(native, "@", $fmt, $eq $fix);
+            test_absolute_sizes!(network, "!", $fmt, $eq $fix);
         }
         )+
     };
