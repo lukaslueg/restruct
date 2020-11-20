@@ -50,7 +50,7 @@
 //! assert_eq!(BARFOO, (987, 412, std::f32::consts::PI, false));
 //!
 //! // Read/Write data in the given format to a `io::Read/Write`
-//! let mut buffer = Vec::new();
+//! let mut buffer = Vec::with_capacity(FooParser::SIZE);
 //! let inp = (123, 456, -2.521, false);
 //! FooParser::write_to(inp, &mut buffer)?;
 //! let outp = FooParser::read_from(&mut &buffer[..])?;
@@ -110,7 +110,7 @@
 //!
 //! The proc-macro will add the following items to the given type, among others:
 //!
-//!  * An implementation of `restruct::Struct`, which will hold the type aliases
+//!  * An implementation of [`restruct::Struct`], which will hold the type aliases
 //!  for the packed and unpacked representation. For example,
 //!  `<Foo as restruct::Struct>::Packed` will be a type alias for `[u8; N]`,
 //!  where `N` is some `const`, and `...::Unpacked` will be a tuple.
