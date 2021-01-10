@@ -86,7 +86,7 @@ struct Field {
 
 impl Field {
     /// The method to call on numer-types to convert endianess, yielding bytes
-    fn to_bytes(order: &parser::ByteOrder) -> syn::Ident {
+    fn bytes(order: &parser::ByteOrder) -> syn::Ident {
         syn::Ident::new(
             match order {
                 parser::ByteOrder::Native => "to_ne_bytes",
@@ -127,7 +127,7 @@ impl Field {
     /// An (const) expression yielding the size in bytes of this field
     fn size_expr(&self, modifier: &parser::Modifier) -> syn::Expr {
         let tipe = self.tipe(modifier.native_types());
-        let tob = Self::to_bytes(&modifier.byte_order());
+        let tob = Self::bytes(&modifier.byte_order());
         match (self.materialize, &self.fmt) {
             (true, Format::Bool) => {
                 syn::parse_quote! {
@@ -220,7 +220,7 @@ impl Field {
 
     /// A (const) expression yielding the array-representation
     fn pack_expr(&self, modifier: &parser::Modifier, access: &syn::Expr) -> syn::Expr {
-        let tob = Self::to_bytes(&modifier.byte_order());
+        let tob = Self::bytes(&modifier.byte_order());
         let tipe = self.tipe(modifier.native_types());
         match self.fmt {
             Format::Bool => {
@@ -491,7 +491,7 @@ impl Compilation {
                     const #$name: usize = $($tt)*;
                 })
             }
-        };
+        }
 
         if let Some(first_field) = self.fields.first() {
             let o_id = first_field.offset_ident();

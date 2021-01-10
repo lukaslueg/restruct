@@ -51,7 +51,7 @@ fn empty_fmt() {
     assert_eq!(Foo::SIZE, 0);
     assert!(Foo::FIELDS.is_empty());
     assert_eq!(Foo::pack(()), [0u8; 0]);
-    assert_eq!(Foo::unpack([0u8; 0]), ());
+    let _: () = Foo::unpack([0u8; 0]);
 }
 
 #[test]
@@ -60,7 +60,7 @@ fn zeroed_format_is_zst() {
     assert_eq!(Foo::SIZE, 0);
     assert_eq!(Foo::FIELDS.len(), 2);
     assert_eq!(Foo::pack(()), [0u8; 0]);
-    assert_eq!(Foo::unpack([0u8; 0]), ());
+    let _: () = Foo::unpack([0u8; 0]);
 }
 
 #[test]

@@ -25,7 +25,7 @@ impl Header {
         let (magic, version_major, version_minor, ts_correction, ts_accuracy, snaplen, datalink) =
             PcapHeader::read_from(&mut inp)?;
 
-        if magic != 0xa1b_2c3d4 {
+        if magic != 0xa1b2_c3d4 {
             panic!("oh noes, we don't support this!");
         }
 
