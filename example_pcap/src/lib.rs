@@ -1,4 +1,3 @@
-#![feature(const_fn)]
 #![feature(const_fn_transmute)]
 
 #[derive(restruct_derive::Struct)]

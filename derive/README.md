@@ -14,7 +14,6 @@ conversion to/from Rust-types. The Format Strings are interpreted at compile-tim
 generate a type whose functions can be used to convert between unstructured and structured data.
 
 ```rust
-#![feature(const_fn)]
 #![feature(const_fn_transmute)]
 
 // Generate a parser in little-endian for two 32bit integers, a float and a bool.
