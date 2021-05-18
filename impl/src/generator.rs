@@ -373,8 +373,8 @@ impl Compilation {
         }
         Self {
             name,
-            modifier,
             fields,
+            modifier,
             generics,
         }
     }
