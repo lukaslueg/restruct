@@ -47,12 +47,14 @@ mod tests {
     }
 
     #[test]
+    #[cfg_attr(miri, ignore)]
     fn reach_bottom_most_turtle() {
         let u = super::world::LowestTurtle::retrieve();
         assert_eq!(u, (-1, (100, 127, 128), (100, 10_000_000_000, -32000)));
     }
 
     #[test]
+    #[cfg_attr(miri, ignore)]
     fn reach_the_turtle() {
         let u = super::world::Turtle::retrieve();
         assert_eq!(u.0, 100);
