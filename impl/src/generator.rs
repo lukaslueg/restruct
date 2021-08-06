@@ -70,9 +70,7 @@ impl From<parser::FormatCode> for Format {
             ULongLong => Format::ULongLong,
             UShort => Format::UShort,
             USize => Format::USize,
-            Ident(ref name) => {
-                Format::Ident(syn::Ident::new(name, proc_macro2::Span::call_site()))
-            }
+            Ident(ref name) => Format::Ident(syn::Ident::new(name, proc_macro2::Span::call_site())),
         }
     }
 }
