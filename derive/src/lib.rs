@@ -30,7 +30,6 @@
 //! generate a type whose functions can be used to convert between unstructured and structured data.
 //!
 //! ```
-//! # #![feature(const_fn_transmute)]
 //! // Generate a parser in little-endian for two 32bit integers, a float and a bool.
 //! #[derive(restruct_derive::Struct)]
 //! #[fmt="<2if?"]
@@ -58,7 +57,6 @@
 //! ```
 //!
 //! ```ignore
-//! # #![feature(const_fn_transmute)]
 //! // As the packing- and unpacking-functions are const, they can initialize other constants.
 //! // Read some file from disk and directly unpack it into a const during compilation.
 //! #[derive(restruct_derive::Struct)]
@@ -83,19 +81,12 @@
 //! As long as endianess does not need to be converted and copying can be elided, packing and
 //! unpacking should usually be free of any runtime cost.
 //!
-//! *Note that this crate is currently nightly-only; the following feature-gates need to be
-//! unsealed:*
-//! ```
-//! #![feature(const_fn_transmute)]
-//! ```
-//!
 //! # Deriving
 //!
 //! Parsers are derived on types using the `Struct`-proc-macro from the `restruct_derive` crate.
 //! The Format String is passed via the `fmt`-attribute.
 //!
 //! ```
-//! # #![feature(const_fn_transmute)]
 //! #[derive(restruct_derive::Struct)]
 //! #[fmt=">3Qb2?l"]
 //! struct FrameHeader;
@@ -228,7 +219,6 @@
 //!
 //! Packing three integers using standard sizes in big-endian:
 //! ```
-//! # #![feature(const_fn_transmute)]
 //! #[derive(restruct_derive::Struct)]
 //! #[fmt = ">2hl"]
 //! struct Foobar;
@@ -247,7 +237,6 @@
 //!
 //! The Format String can passed in multiple parts, simplifying construction by macros:
 //! ```
-//! # #![feature(const_fn_transmute)]
 //! #[derive(restruct_derive::Struct)]
 //! #[fmt = ">"]
 //! #[fmt = "2h"]
@@ -259,7 +248,6 @@
 //!
 //! Slices can be unpacked at the cost of a copy (which may get elided):
 //! ```
-//! # #![feature(const_fn_transmute)]
 //! #[derive(restruct_derive::Struct)]
 //! #[fmt = ">2h"]
 //! struct Foobar;
@@ -272,7 +260,6 @@
 //!
 //! The derived types can be referred to via the `Struct` trait:
 //! ```
-//! # #![feature(const_fn_transmute)]
 //! use std::io::{self, Read};
 //!
 //! #[derive(restruct_derive::Struct)]
@@ -303,7 +290,6 @@
 //! Format Strings always describe fixed-sized data stuctures. When dealing when variable-sized
 //! formats, two steps are necessary:
 //! ```
-//! # #![feature(const_fn_transmute)]
 //! use std::io::{self, Write};
 //!
 //! #[derive(restruct_derive::Struct)]
@@ -346,7 +332,6 @@
 //!
 //! Alignment rules apply in native mode:
 //! ```
-//! # #![feature(const_fn_transmute)]
 //! #[derive(restruct_derive::Struct)]
 //! #[fmt = "b0ib"]
 //! struct Foobar;
@@ -365,7 +350,6 @@
 //!
 //! Formats can refer to previous definitions:
 //! ```
-//! # #![feature(const_fn_transmute)]
 //! #[derive(restruct_derive::Struct)]
 //! #[fmt = "=i3s"]
 //! struct Foo;
@@ -411,7 +395,6 @@
 //! When converting from native structs, you must be **sure** that your layout description
 //! matches the actual layout:
 //! ```ignore
-//! # #![feature(const_fn_transmute)]
 //! #[derive(restruct_derive::Struct)]
 //! #[fmt = "@2dl"]
 //! struct Header;
@@ -424,8 +407,6 @@
 //! bytes on those platforms! The correct Format String would have been `"@2di"`.
 //!
 //! ---
-
-#![feature(external_doc)]
 
 extern crate proc_macro;
 
@@ -443,6 +424,6 @@ pub fn derive_parser(input: proc_macro::TokenStream) -> proc_macro::TokenStream 
     restruct::derive(input.into()).into()
 }
 
-#[doc(include = "../README.md")]
+#[doc = include_str!("../README.md")]
 #[allow(dead_code)]
 type _READMETEST = ();

@@ -1,5 +1,3 @@
-#![feature(const_fn_transmute)]
-
 #[derive(restruct_derive::Struct)]
 #[fmt = "<I2Hi3I"]
 struct PcapHeader;

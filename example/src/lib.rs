@@ -1,5 +1,3 @@
-#![feature(const_fn_transmute)]
-
 extern "C" {
     fn reach_turtle() -> *const u8;
     fn reach_lowest_turtle() -> *const u8;

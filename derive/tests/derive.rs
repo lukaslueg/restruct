@@ -1,5 +1,3 @@
-#![feature(const_fn_transmute)]
-
 #[macro_use]
 mod common;
 

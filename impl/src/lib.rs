@@ -28,9 +28,8 @@
 //! See the `restruct_derive`-crate for documentation.
 
 #![recursion_limit = "256"]
-#![feature(external_doc)]
 
-#[doc(include = "../README.md")]
+#[doc = include_str!("../README.md")]
 #[allow(dead_code)]
 type _READMETEST = ();
 
