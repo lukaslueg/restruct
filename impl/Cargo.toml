@@ -7,7 +7,7 @@ authors = ["Lukas Lueg <lukas.lueg@gmail.com>"]
 documentation = "https://docs.rs/restruct_derive"
 readme = "README.md"
 license = "MIT"
-edition = "2018"
+edition = "2021"
 
 [dependencies]
 syn = { version = "1.0", features = ["full", "extra-traits"] }
