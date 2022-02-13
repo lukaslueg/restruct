@@ -3,9 +3,9 @@ environment:
     PROJECT_NAME: restruct
   matrix:
     - TARGET: i686-pc-windows-msvc
-      CHANNEL: nightly
+      CHANNEL: stable
     - TARGET: x86_64-pc-windows-msvc
-      CHANNEL: nightly
+      CHANNEL: stable
 
 install:
   - curl -sSf -o rustup-init.exe https://win.rustup.rs
